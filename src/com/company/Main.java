@@ -6,13 +6,16 @@ import com.company.utils.Job;
 import com.company.utils.WebsiteDownloader;
 import com.company.vendors.OlxVendor;
 import org.jsoup.nodes.Document;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         // TODO: for each vendor
 
         // Get list of URL for custom vendor
@@ -29,7 +32,6 @@ public class Main {
             Job job = olxDP.parse(doc);
             System.out.println(job);
         }
-
 
     }
 }
