@@ -1,0 +1,26 @@
+Pentru a extrage nr de telefon (trebuie token)
+Networks tab: phones/
+
+GET: https://www.olx.ro/api/v1/offers/214210809/phones/
+Bearer 6c448d9c6d9371ef705e45406b70eb40001ec2be
+
+
+Ca sa fac rost de un token, prima data fac manual, si extrag token
+Ca sa accesez /phone --> trebuie sa adaug heather Bearer token
+invalid message: {"error":"invalid_token","error_description":"The access token provided is invalid","error_human_title":"Token invalid."}
+
+
+----------------------------------------------------------------------------------------------
+
+Pentru a extrage token(trebuie client_id, client_secret, device_id, device_secret)
+Networks tab: token/
+
+POST: https://www.olx.ro/api/open/oauth/token/
+
+
+
+----------------------------------------------------------------------------------------------
+
+Cand intru prima data trebuie sa updatez:
+
+token: intru anunt, dau click pe show number, in network /phones
