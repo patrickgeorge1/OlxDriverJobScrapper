@@ -34,7 +34,7 @@ public class Main {
         driver.get("https://www.google.com");
         Thread.sleep(2000);
 
-        // Find the proper frame and click on the accept button
+        // Find the proper iframe and click on the accept button
         String xpath =  "//IFrame[starts-with(@src, 'https://consent.google.com')]";
         WebElement we = driver.findElements(By.xpath(xpath)).get(0);
         driver.switchTo().frame(we);
