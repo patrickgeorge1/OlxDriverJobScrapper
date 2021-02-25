@@ -10,8 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -31,9 +30,20 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.com");
-        waitForPageLoad(driver);
-        waitForAcceptCookiesFrame(webDriver);
-//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        writeInFile(driver.getPageSource());
+        driver.close();
+
+//        waitForPageLoad(driver);
+//        waitForAcceptCookiesFrame(webDriver);
 //        driver.findElement(By.className("RveJvd snByac"));
     }
+
+        public static void writeInFile(String text) throws FileNotFoundException, UnsupportedEncodingException {
+            PrintWriter writer = new PrintWriter("pageSource.txt", "UTF-8");
+            writer.println(text);
+            writer.close();
+        }
+
+
 }
