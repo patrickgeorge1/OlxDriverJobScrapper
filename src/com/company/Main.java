@@ -8,6 +8,7 @@ import com.company.vendors.OlxVendor;
 import org.jsoup.nodes.Document;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.*;
@@ -28,22 +29,18 @@ public class Main {
         File file = new File("D:/chromeWebDriver/chromedriver.exe");
         System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
+        // Get the webpage
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.com");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        writeInFile(driver.getPageSource());
-        driver.close();
+        Thread.sleep(2000);
 
-//        waitForPageLoad(driver);
-//        waitForAcceptCookiesFrame(webDriver);
-//        driver.findElement(By.className("RveJvd snByac"));
+        // Find the proper frame and click on the accept button
+        String xpath =  "//IFrame[starts-with(@src, 'https://consent.google.com')]";
+        WebElement we = driver.findElements(By.xpath(xpath)).get(0);
+        driver.switchTo().frame(we);
+        driver.findElement(By.id("introAgreeButton")).click();
+
+        // driver.close();
     }
-
-        public static void writeInFile(String text) throws FileNotFoundException, UnsupportedEncodingException {
-            PrintWriter writer = new PrintWriter("pageSource.txt", "UTF-8");
-            writer.println(text);
-            writer.close();
-        }
-
 
 }
