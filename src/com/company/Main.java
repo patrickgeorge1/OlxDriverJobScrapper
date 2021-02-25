@@ -13,25 +13,22 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/**
+ * File / Project structure / Modules / Dependencies add Jar client-combined.jar
+ * File / Project structure / Modules / Dependencies add Libs  libs from selenium java client
+ * Chrome Driver :              https://sites.google.com/a/chromium.org/chromedriver/
+ * Selenium Client Java :       https://www.selenium.dev/downloads/
+ */
 public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        // TODO: for each vendor
 
-        // Get list of URL for custom vendor
-        OlxVendor olxVendor = new OlxVendor();
-        ArrayList<String> urls = olxVendor.getValidURL();
+        File file = new File("D:/chromeWebDriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
 
-        for (String url : urls) {
-            // For each URL download website
-            WebsiteDownloader wd = new WebsiteDownloader(url, HttpRequestType.GET);
-            Document doc = wd.download();
-
-            // Parse and get job info
-            OlxDocumentParser olxDP = new OlxDocumentParser();
-            Job job = olxDP.parse(doc);
-            System.out.println(job);
-        }
-
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.google.com");
+        driver.close();
     }
 }
