@@ -6,12 +6,14 @@ import com.company.utils.Job;
 import com.company.utils.WebsiteDownloader;
 import com.company.vendors.OlxVendor;
 import org.jsoup.nodes.Document;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -29,6 +31,9 @@ public class Main {
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.google.com");
-        driver.close();
+        waitForPageLoad(driver);
+        waitForAcceptCookiesFrame(webDriver);
+//        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+//        driver.findElement(By.className("RveJvd snByac"));
     }
 }
